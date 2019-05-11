@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config version="1.0">
+    <host>nas.example.com</host>
+    <fingerprint>00000000000000000000000000000000</fingerprint>
+    <username>username</username>
+    <password>password</password>
+    <share>share</share>
+    <key>key</key>
+</config>
