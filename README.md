@@ -53,7 +53,7 @@ example_config.xml is a template configuration file. All fields are required.
 * username: ssh username
 * password: ssh password
 * share: share to mount/unmount
-* key: share decryption key (text key, not key file created on share creation)
+* key: share decryption key (text key, not key file created on volume creation)
 
 To get the fingerprint, leave the placeholder fingerprint and run the utility and take the fingerprint from the log file (strip '-' characters).
 
@@ -67,13 +67,15 @@ License
 
 SynoEncMnt is distributed under the MIT License.
 
-Included open-source libraries:
+Included open-source components (see doc/SW-LICENSE.txt):
 
+* [NLog](https://github.com/NLog/NLog) - MIT License
 * [SSH.NET](https://github.com/sshnet/SSH.NET) - MIT License
 
 TODO
 ----
 
 * Remove fixed delay in shell interaction
-* Shut down NAS after dismount (optional specified in config)
+* Shut down NAS after dismount (optional specified with flag)
+* Switch to command line parsing with Mono.Options
 * Installer (WiX)
