@@ -23,12 +23,12 @@ namespace SynoEncMnt
 
         public static string Key { get; private set; }
 
-        public static void Init(string configFileName)
+        public static void Init(string xmlContents)
         {
             logger.Debug("start config validation");
 
             XmlDocument doc = new XmlDocument();
-            doc.Load(configFileName);
+            doc.LoadXml(xmlContents);
 
             Host = doc.SelectSingleNode("/config/host").InnerText;
             Fingerprint = doc.SelectSingleNode("/config/fingerprint").InnerText;

@@ -13,18 +13,21 @@ Based on work from [this](https://forum.synology.com/enu/viewtopic.php?f=90&t=10
 Usage
 -----
 
-SynoEncMnt.exe [action] [config]
-
-* action: mount/dismount
-* config: path to configuration xml file
+SynoEncMnt.exe [arguments]
 
 Returns 0 for mount/dismount success and 1 for mount/dismount failure.
 
+Arguments:
+
+* mount
+* dismount
+* config [xml config file path]
+
 Examples:
 
-C:\SynoEncMnt\SynoEncMnt.exe mount C:\bkpcfg\nas_backup1.xml
+C:\SynoEncMnt\SynoEncMnt.exe -mount -config C:\bkpcfg\nas_backup1.xml
 
-C:\SynoEncMnt\SynoEncMnt.exe dismount C:\bkpcfg\nas_backup1.xml
+C:\SynoEncMnt\SynoEncMnt.exe -dismount -config C:\bkpcfg\nas_backup1.xml
 
 Logging:
 
@@ -53,22 +56,30 @@ example_config.xml is a template configuration file. All fields are required.
 * username: ssh username
 * password: ssh password
 * share: share to mount/unmount
-* key: share decryption key (text key, not key file created on volume creation)
+* key: share decryption key (text key, not key file created on share creation)
 
-To get the fingerprint, leave the placeholder fingerprint and run the utility and take the fingerprint from the log file (strip '-' characters).
+To get the fingerprint, leave the placeholder fingerprint and run the utility and take the fingerprint from the log file.
 
 Changelog
 ---------
 
-1.0.0.0 - Initial release
+* [1.1.0.0 (2019-07-05)](https://github.com/duggerd/SynoEncMnt/releases/tag/v1.1.0.0)
+
+    * [BREAKING CHANGE] Use Mono.Options for argument parsing
+    * Update NLog version from 4.6.2 to 4.6.5
+
+* [1.0.0.0 (2019-05-11)](https://github.com/duggerd/SynoEncMnt/releases/tag/v1.0.0.0)
+
+    * Initial release
 
 License
 -------
 
-SynoEncMnt is distributed under the MIT License.
+SynoEncMnt is distributed under the MIT License (see LICENSE.txt).
 
 Included open-source components (see doc/SW-LICENSE.txt):
 
+* [Mono.Options](https://github.com/mono/mono/blob/master/mcs/class/Mono.Options/Mono.Options/Options.cs) - MIT License
 * [NLog](https://github.com/NLog/NLog) - MIT License
 * [SSH.NET](https://github.com/sshnet/SSH.NET) - MIT License
 
@@ -76,6 +87,5 @@ TODO
 ----
 
 * Remove fixed delay in shell interaction
-* Shut down NAS after dismount (optional specified with flag)
-* Switch to command line parsing with Mono.Options
+* Shut down NAS after dismount (option specified with flag)
 * Installer (WiX)
